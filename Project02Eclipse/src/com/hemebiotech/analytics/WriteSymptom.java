@@ -1,4 +1,5 @@
 package com.hemebiotech.analytics;
+import java.io.File;
 import java.util.Map;
 import java.util.TreeMap;
 import java.io.IOException;
@@ -9,11 +10,14 @@ import java.io.FileWriter;
  */
 public class WriteSymptom implements IWriteSymptom {
     private final TreeMap<String, Integer> result;
+    private final String outputPath;
     /**
      * @param result : We take it to take it size and use for with it to write symptoms
+     * @param outputPath : The path where the file will be stored
      * */
-    public WriteSymptom(TreeMap<String, Integer> result) {
+    public WriteSymptom(TreeMap<String, Integer> result, String outputPath) {
         this.result = result;
+        this.outputPath = outputPath;
     }
     /**
      * @implNote  adding results into a file and write it.
@@ -21,7 +25,7 @@ public class WriteSymptom implements IWriteSymptom {
      */
     public void writeSymptomsInFile() {
         try {
-            FileWriter writer = new FileWriter("result.out");
+            FileWriter writer = new FileWriter(new File(outputPath, "result.out"));
             for (Map.Entry<String, Integer> entry : this.result.entrySet()) {
                 String key = entry.getKey();
                 Integer value = entry.getValue();
