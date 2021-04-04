@@ -7,8 +7,8 @@ import java.util.TreeMap;
  *
  */
 public class CountSymptom implements ICountSymptom {
-    BufferedReader file;
-    TreeMap<String, Integer> result;
+    private BufferedReader file;
+    private TreeMap<String, Integer> result;
     /**
      * @param file The file which contain data we'll check
      * @param result the TreeMap we will return which contains the count of symptoms
